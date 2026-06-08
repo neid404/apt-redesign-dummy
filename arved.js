@@ -32,6 +32,63 @@
     });
     sync();
   }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
-  else build();
+  function buildNav(){
+    var navIn = document.querySelector('.nav-in');
+    if(!navIn || navIn.querySelector('.nav-burger')) return;
+    var navL = navIn.querySelector('.nav-l');
+    var bookBtn = navIn.querySelector('.btn-ink');
+
+    var burger = document.createElement('button');
+    burger.className = 'nav-burger';
+    burger.type = 'button';
+    burger.setAttribute('aria-label','Menü öffnen');
+    burger.setAttribute('aria-expanded','false');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+    navIn.appendChild(burger);
+
+    var links = '';
+    if(navL){
+      navL.querySelectorAll('a').forEach(function(a){
+        var on = a.classList.contains('on') ? ' on' : '';
+        links += '<a class="ml' + on + '" href="' + a.getAttribute('href') + '">' +
+          a.textContent.trim() + '<span class="ar" aria-hidden="true">→</span></a>';
+      });
+    }
+    var bookHref = bookBtn ? bookBtn.getAttribute('href') : '#';
+    var bookTxt = bookBtn ? bookBtn.textContent.trim() : 'Buchen';
+
+    var menu = document.createElement('div');
+    menu.className = 'm-menu';
+    menu.innerHTML =
+      '<div class="ov"></div>' +
+      '<div class="panel">' + links +
+        '<a class="btn-ink m-book" href="' + bookHref + '" target="_blank" rel="noopener">' + bookTxt +
+          ' <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>' +
+        '<div class="m-foot"><a href="tel:+4945179073550">+49 451 790 735 50</a><span>Arved Apartments · Lübeck</span></div>' +
+      '</div>';
+    document.body.appendChild(menu);
+
+    var root = document.documentElement;
+    var navBar = document.querySelector('.nav');
+    var panel = menu.querySelector('.panel');
+    function close(){ root.classList.remove('m-open'); burger.setAttribute('aria-expanded','false'); }
+    function open(){
+      // clear whatever header height is currently on screen (util bar wraps on mobile,
+      // and the util bar scrolls away while the nav stays sticky)
+      if(navBar && panel){
+        var b = navBar.getBoundingClientRect().bottom;
+        panel.style.paddingTop = Math.max(b + 18, 76) + 'px';
+      }
+      root.classList.add('m-open'); burger.setAttribute('aria-expanded','true');
+    }
+    burger.addEventListener('click', function(){ root.classList.contains('m-open') ? close() : open(); });
+    menu.querySelector('.ov').addEventListener('click', close);
+    menu.querySelectorAll('.ml, .m-book').forEach(function(a){ a.addEventListener('click', close); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' || e.keyCode === 27) close(); });
+    window.addEventListener('resize', function(){ if(window.innerWidth > 820) close(); });
+  }
+
+  function init(){ build(); buildNav(); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
