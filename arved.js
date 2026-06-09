@@ -11,7 +11,9 @@
 
     var drawer = document.createElement('div');
     drawer.className = 'nav-drawer';
-    var html = '<div class="top"><div class="mark"><b>ARVED</b><span>Apartments · Lübeck</span></div>'
+    var darkWorld = document.documentElement.hasAttribute('data-theme');
+    var wmSrc = darkWorld ? 'assets/arved/logo-wordmark-cream.svg' : 'assets/arved/logo-wordmark-dark.svg';
+    var html = '<div class="top"><a class="mark" href="index.html"><img src="' + wmSrc + '" alt="ARVED Apartments · Lübeck"></a>'
              + '<button class="x" type="button" aria-label="Menü schließen">&times;</button></div>';
     if(links){
       links.querySelectorAll('a').forEach(function(a){
@@ -34,4 +36,29 @@
   }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();
+})();
+
+/* Mobile: booking bar collapses to a single CTA that expands on tap */
+(function(){
+  function init(){
+    var book = document.querySelector('.hero .book');
+    if(!book) return;
+    var go = book.querySelector('.bk-go');
+    if(!go) return;
+    var mq = window.matchMedia('(max-width:720px)');
+    function sync(){
+      if(mq.matches){ book.classList.add('collapsible'); }
+      else { book.classList.remove('collapsible','open'); }
+    }
+    sync();
+    if(mq.addEventListener) mq.addEventListener('change', sync); else mq.addListener(sync);
+    go.addEventListener('click', function(e){
+      if(mq.matches && book.classList.contains('collapsible') && !book.classList.contains('open')){
+        e.preventDefault();
+        book.classList.add('open');
+      }
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();
