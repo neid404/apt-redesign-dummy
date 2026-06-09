@@ -33,37 +33,43 @@
   .rn{font-family:var(--serif);font-weight:500;color:var(--brass);line-height:.78;letter-spacing:0;}
 
   /* ---- top utility bar ---- */
-  .util{background:var(--ink2);color:var(--invm);font-size:12px;letter-spacing:0.02em;}
-  .util-in{max-width:1280px;margin:0 auto;padding:9px 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
-  .util a{color:var(--invm);transition:color .15s;}
-  .util a:hover{color:var(--inv);}
-  .util .l{display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
-.util .l a,.util .l span{white-space:nowrap;}
-  .util .dot{color:var(--brass);}
-  .util .lang{white-space:nowrap;}
-  .util .lang b{color:var(--inv);font-weight:500;}
+  .util{background:var(--paper);color:var(--t3);font-size:11px;letter-spacing:0.04em;border-bottom:1px solid var(--line-s);}
+  .util-in{max-width:1280px;margin:0 auto;padding:11px 56px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .util .l{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+  .util .l a,.util .l span{white-space:nowrap;color:var(--t2);display:inline-flex;align-items:center;gap:8px;transition:color .15s;}
+  .util .l a:hover{color:var(--t1);}
+  .util .l svg{width:13px;height:13px;stroke:var(--brass-d);stroke-width:1.6;fill:none;}
+  .util .dot{display:none;}
+  .util .lang{white-space:nowrap;color:var(--t3);display:inline-flex;gap:7px;letter-spacing:0.1em;}
+  .util .lang b{color:var(--t1);font-weight:500;}
 
   /* ---- nav ---- */
   .nav{position:sticky;top:0;z-index:40;background:rgba(246,245,243,0.84);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-  .nav-in{max-width:1280px;margin:0 auto;padding:17px 56px;display:flex;align-items:center;justify-content:space-between;gap:30px;}
-  .mark b{font-family:var(--serif);font-size:25px;font-weight:500;letter-spacing:0.16em;display:block;line-height:1;}
-  .mark span{font-size:8.5px;letter-spacing:0.36em;text-transform:uppercase;color:var(--t3);margin-top:6px;display:block;}
-  .nav-l{display:flex;align-items:center;gap:34px;}
-  .nav-l a{font-size:13.5px;color:var(--t2);transition:color .15s;white-space:nowrap;}
-  .nav-l a:hover{color:var(--t1);}
+  .nav-in{max-width:1280px;margin:0 auto;padding:21px 56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:30px;}
+  .mark{grid-column:2;grid-row:1;justify-self:center;display:inline-flex;align-items:center;}
+  .mark img{height:26px;width:auto;display:block;}
+  .mark b{display:none;}
+  .mark span{display:none;}
+  .nav-l{grid-column:1;grid-row:1;justify-self:start;display:flex;align-items:center;gap:30px;}
+  .nav-l a{position:relative;font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--t2);transition:color .2s,letter-spacing .2s;white-space:nowrap;padding:5px 0;}
+  .nav-l a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.6,.2,1);}
+  .nav-l a:hover{color:var(--t1);letter-spacing:0.2em;}
+  .nav-l a:hover::after{transform:scaleX(1);}
+  .nav-in > .btn-ink{grid-column:3;grid-row:1;justify-self:end;}
   .btn-ink{background:var(--ink);color:var(--inv);font-size:13px;font-weight:500;border-radius:3px;padding:11px 24px;letter-spacing:0.02em;display:inline-flex;align-items:center;gap:8px;transition:opacity .15s;}
   .btn-ink:hover{opacity:.88;}
   .btn-ink svg{width:14px;height:14px;stroke:currentColor;stroke-width:1.6;fill:none;transition:transform .2s;}
   .btn-ink:hover svg{transform:translateX(3px);}
 
   /* ---- hero ---- */
-  .hero{position:relative;min-height:792px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+  .hero{position:relative;min-height:792px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;}
+  .hero-m{display:none;}
   .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 50%;}
-  .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,7,0.86),rgba(20,14,7,0.18) 52%,rgba(20,14,7,0.30)),linear-gradient(to right,rgba(20,14,7,0.55),rgba(20,14,7,0) 62%);}
+  .hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,14,7,0.74),rgba(20,14,7,0.06) 48%,rgba(20,14,7,0.14)),linear-gradient(to right,rgba(20,14,7,0.5),rgba(20,14,7,0) 56%);}
   .hero-top{position:absolute;top:32px;left:0;right:0;}
   .hero-top .wrap{display:flex;justify-content:space-between;color:rgba(255,251,244,0.82);font-size:11px;letter-spacing:0.26em;text-transform:uppercase;}
   .hero-top b{color:rgba(255,250,244,0.92);font-weight:500;}
-  .hero-c{position:relative;padding-bottom:54px;}
+  .hero-c{position:relative;padding:40px 0;}
   .hero-price{display:inline-flex;align-items:baseline;gap:8px;white-space:nowrap;color:rgba(255,250,244,0.92);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;}
   .hero-price b{font-family:var(--sans);font-size:13px;font-weight:600;color:#fff;letter-spacing:0.04em;font-variant-numeric:tabular-nums;}
   .hero h1{font-family:var(--serif);font-weight:500;letter-spacing:-0.008em;line-height:1.0;color:#fff;font-size:clamp(52px,6.6vw,98px);margin:22px 0 0;max-width:15ch;}
@@ -71,26 +77,36 @@
   .hero-sub{color:rgba(255,251,244,0.8);font-size:18.5px;line-height:1.55;max-width:44ch;margin:20px 0 0;}
 
   /* booking bar */
-  .book{margin-top:36px;display:flex;align-items:stretch;background:rgba(255,255,255,0.97);border-radius:4px;backdrop-filter:blur(8px);max-width:780px;box-shadow:0 36px 80px -34px rgba(15,10,4,0.7);overflow:hidden;}
+  .book{margin-top:36px;display:flex;align-items:stretch;background:#ffffff;border-radius:4px;max-width:780px;box-shadow:0 36px 80px -34px rgba(15,10,4,0.7);}
+  .bk-f:first-child{border-radius:4px 0 0 4px;}
   .bk-f{flex:1;padding:15px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px;cursor:pointer;transition:background .15s;}
   .bk-f:hover{background:var(--card-h);}
   .bk-f .l{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);}
   .bk-f .v{font-size:15px;color:var(--t1);display:flex;align-items:center;gap:8px;}
   .bk-f .v svg{width:15px;height:15px;stroke:var(--brass-d);stroke-width:1.6;fill:none;}
-  .bk-go{display:flex;align-items:center;gap:9px;background:var(--ink);color:var(--inv);font-size:14px;font-weight:500;padding:0 28px;white-space:nowrap;transition:opacity .15s;}
+  .bk-go{display:flex;align-items:center;gap:9px;background:var(--ink);color:var(--inv);font-size:14px;font-weight:500;padding:0 28px;white-space:nowrap;transition:opacity .15s;border-radius:0 4px 4px 0;}
   .bk-go:hover{opacity:.9;}
   .bk-go svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.7;fill:none;transition:transform .2s;}
   .bk-go:hover svg{transform:translateX(3px);}
 
   /* ---- intro manifest ---- */
-  .intro{padding:104px 0 96px;}
-  .intro-grid{display:grid;grid-template-columns:1.35fr 0.65fr;gap:64px;align-items:end;}
-  .intro h2{font-family:var(--serif);font-size:clamp(30px,3.5vw,46px);font-weight:500;letter-spacing:-0.004em;line-height:1.16;max-width:20ch;}
-  .intro h2 i{font-style:italic;color:var(--brass-d);}
-  .intro p{font-size:15.5px;color:var(--t2);line-height:1.75;}
-  .intro .meta{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
-  .intro .meta div{display:flex;justify-content:space-between;gap:14px;padding:13px 0;border-bottom:1px solid var(--line-s);font-size:13.5px;}
-  .intro .meta div span{color:var(--t2);} .intro .meta div b{font-weight:500;font-family:var(--sans);font-size:13px;color:var(--t1);font-variant-numeric:tabular-nums;}
+  .intro{padding:100px 0 92px;}
+  .intro-lead{max-width:600px;margin-bottom:72px;}
+  .intro-lead .eb{display:block;margin-bottom:16px;}
+  .intro-lead h2{font-family:var(--serif);font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-0.008em;line-height:1.12;}
+  .intro-lead h2 i{font-style:italic;color:var(--brass-d);}
+  .vprops{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .vprop{padding:0 40px;border-left:1px solid var(--line);}
+  .vprop:first-child{padding-left:0;border-left:0;}
+  .vprop:last-child{padding-right:0;}
+  .vprop .vnum{font-family:var(--serif);font-size:18px;color:var(--brass-d);letter-spacing:0.04em;display:inline-block;padding-bottom:13px;border-bottom:1px solid var(--brass);line-height:1;}
+  .vprop h3{font-family:var(--serif);font-size:21px;font-weight:500;margin:18px 0 0;letter-spacing:-0.01em;}
+  .vprop p{font-size:14.5px;color:var(--t2);line-height:1.66;margin:10px 0 0;}
+  .statstrip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:60px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .statstrip .st{padding:30px 26px 30px 0;}
+  .statstrip .st + .st{padding-left:30px;border-left:1px solid var(--line-s);}
+  .statstrip .st b{font-family:var(--serif);font-size:clamp(27px,2.9vw,37px);font-weight:500;letter-spacing:-0.01em;display:block;line-height:1;font-variant-numeric:tabular-nums;}
+  .statstrip .st span{font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;color:var(--t3);margin-top:11px;display:block;}
 
   /* ---- section heads ---- */
   section{padding:104px 0;}
@@ -123,10 +139,11 @@
   .acard:hover img{transform:scale(1.045);}
   .acard .g{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,12,6,0.84),rgba(18,12,6,0.04) 58%);}
   .acard .c{position:relative;padding:24px 26px;width:100%;color:#fff;}
-  .acard .cat{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.74);}
-  .acard h3{font-family:var(--serif);font-size:28px;font-weight:500;margin:7px 0 0;letter-spacing:0;}
-  .acard .row{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:13px;}
-  .acard .spec{font-size:12.5px;color:rgba(255,255,255,0.84);line-height:1.4;max-width:24ch;}
+  .acard h3{font-family:var(--serif);font-size:29px;font-weight:600;margin:0;letter-spacing:0;text-shadow:0 1px 14px rgba(0,0,0,0.55);}
+  .acard .row{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:11px;}
+  .acard .meta{display:flex;flex-wrap:wrap;align-items:center;font-size:13px;font-weight:500;color:#fff;text-shadow:0 1px 9px rgba(0,0,0,0.62);}
+  .acard .meta span{display:inline-flex;align-items:center;white-space:nowrap;}
+  .acard .meta span:not(:last-child)::after{content:"";width:3px;height:3px;border-radius:50%;background:rgba(212,182,140,0.95);margin:0 11px;}
   .acard .pr{text-align:right;line-height:1.05;white-space:nowrap;}
   .acard .pr small{font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.72);display:block;margin-bottom:3px;}
   .acard .pr b{font-family:var(--serif);font-size:25px;font-weight:500;}
@@ -186,11 +203,14 @@
   /* ---- footer ---- */
   footer{background:var(--ink2);color:var(--inv);padding:72px 0 36px;}
   .ft{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.3fr;gap:48px;}
-  .ft .mark b{font-family:var(--serif);font-size:26px;color:var(--inv);letter-spacing:0.16em;}
-  .ft .mark span{font-size:8.5px;letter-spacing:0.36em;text-transform:uppercase;color:rgba(236,226,210,0.5);margin-top:6px;display:block;}
+  .ft .mark img{height:64px;width:auto;display:block;filter:brightness(0) invert(0.9);}
+  .ft .mark b{display:none;}
+  .ft .mark span{display:none;}
   .ft p{font-size:13.5px;line-height:1.7;color:rgba(236,226,210,0.62);max-width:30ch;margin:18px 0 0;}
   .ft h4{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(236,226,210,0.46);margin:0 0 16px;}
   .ft .col a,.ft .col div{display:block;font-size:13.5px;color:rgba(236,226,210,0.72);margin-bottom:11px;transition:color .15s;}
+  .ft .col a{display:flex;align-items:center;gap:9px;}
+  .ft .col a svg{width:14px;height:14px;stroke:var(--brass-iv);stroke-width:1.6;fill:none;flex:0 0 auto;}
   .ft .col a:hover{color:#fff;}
   .nl{display:flex;border:1px solid rgba(236,226,210,0.2);border-radius:3px;overflow:hidden;margin-top:4px;}
   .nl input{flex:1;background:transparent;border:0;color:#fff;font-family:var(--sans);font-size:13px;padding:12px 14px;outline:none;}
@@ -243,19 +263,34 @@ body.menu-open{overflow:hidden;}
 @media(max-width:720px){
   .wrap,.util-in,.nav-in,.phero .in,.band .wrap{padding-left:20px;padding-right:20px;}
   .util{display:none;}
-  .nav-in{padding:13px 20px;}
+  .nav-in{display:flex;justify-content:space-between;padding:13px 20px;}
   .nav-l{display:none;}
   .nav-in > .btn-ink{display:none;}
   .nav-burger{display:inline-flex;}
   .mark b{font-size:21px;}
+  .mark img{height:22px;}
+  .vprops{grid-template-columns:1fr;}
+  .vprop{padding:28px 0 0;border-left:0;border-top:1px solid var(--line);}
+  .vprop:first-child{padding-top:0;border-top:0;}
+  .statstrip{grid-template-columns:1fr 1fr;border-bottom:0;}
+  .statstrip .st{padding:20px 0;border-bottom:1px solid var(--line-s);}
+  .statstrip .st + .st{padding-left:0;border-left:0;}
+  .statstrip .st:nth-child(even){padding-left:20px;border-left:1px solid var(--line-s);}
   .hero{min-height:86vh;}
+  .hero-d{display:none;}
+  .hero-m{display:block;}
   .hero h1{font-size:clamp(38px,12vw,60px);max-width:none;}
   .hero-sub{font-size:16px;max-width:none;}
   .hero-top{display:none;}
-  .hero-c{padding-bottom:30px;}
-  .book{flex-wrap:wrap;max-width:none;}
+  .hero-c{padding:24px 0;}
+  .book{flex-wrap:wrap;max-width:none;overflow:hidden;}
+  .book .bk-f:first-child{border-radius:0;}
   .book .bk-f{flex:1 1 50%;}
-  .book .bk-go{flex:1 1 100%;justify-content:center;padding:15px;}
+  .book .bk-go{flex:1 1 100%;justify-content:center;padding:15px;border-radius:0;}
+  .book.collapsible .bk-f{display:none;}
+  .book.collapsible:not(.open) .bk-go{border-radius:4px;}
+  .book.collapsible.open .bk-f{display:flex;}
+  .book.collapsible.open .bk-go{border-top:1px solid var(--line);}
   section{padding:58px 0;}
   .shead{margin-bottom:28px;gap:14px;}
   .shead .rn{font-size:38px;}
@@ -289,7 +324,7 @@ body.menu-open{overflow:hidden;}
   .shead .rn{font-size:32px;}
 }
 </style>
-<script src="arved.js?v=3"></script>
+<script src="arved.js?v=4"></script>
 </head>
 <body>
 
@@ -297,11 +332,11 @@ body.menu-open{overflow:hidden;}
   <div class="util">
     <div class="util-in">
       <div class="l">
-        <a href="tel:+4945179073550">+49 (0) 451 7907 3550</a>
+        <a href="tel:+4945179073550"><svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>+49 (0) 451 7907 3550</a>
         <span class="dot">·</span>
-        <a href="mailto:hello@arved-apartments.de">hello@arved-apartments.de</a>
+        <a href="mailto:hello@arved-apartments.de"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@arved-apartments.de</a>
         <span class="dot">·</span>
-        <span>Königstraße 1–3, 23552 Lübeck</span>
+        <span><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Königstraße 1–3, 23552 Lübeck</span>
       </div>
       <div class="lang"><b>DE</b> · EN</div>
     </div>
@@ -310,7 +345,7 @@ body.menu-open{overflow:hidden;}
   <!-- nav -->
   <header class="nav">
     <div class="nav-in">
-      <a class="mark" href="index.html"><b>ARVED</b><span>Apartments · Lübeck</span></a>
+      <a class="mark" href="index.html"><img src="assets/arved/logo-wordmark-dark.svg" alt="ARVED Apartments · Lübeck"></a>
       <nav class="nav-l">
         <a href="apartments.html">Apartments</a>
         <a href="heritage.html">Heritage</a>
@@ -323,14 +358,8 @@ body.menu-open{overflow:hidden;}
 
   <!-- hero -->
   <section class="hero" style="padding:0;">
-    <img src="assets/arved/entrance.jpg" alt="Historischer Eingang der Arved Apartments, Königstraße Lübeck" style="object-position:center 44%;">
+    <img src="assets/arved/hero-entrance.png" alt="Historischer Marmor-Eingang mit goldenem ARVED-Schriftzug" style="object-position:center 38%;">
     <div class="hero-ov"></div>
-    <div class="hero-top">
-      <div class="wrap">
-        <span>Altstadt Lübeck · <b>seit der Kaiserzeit</b></span>
-        <span>Königstraße 1–3</span>
-      </div>
-    </div>
     <div class="hero-c">
       <div class="wrap">
         <span class="hero-price">Apartments <b>ab 126 €</b> · pro Nacht</span>
@@ -349,17 +378,32 @@ body.menu-open{overflow:hidden;}
   <!-- intro manifest -->
   <div class="wrap">
     <div class="intro">
-      <div class="intro-grid">
-        <h2>Wer Sinn für das Besondere hat, erfreut sich an charmanten <i>Design-Details</i> — behutsam im Stil des Hauses.</h2>
-        <div>
-          <p style="margin:0 0 22px;">Ob ein paar Nächte oder ein langer Aufenthalt: bei Arved wohnen Sie ruhig, privat und mit Charakter — ein Zuhause auf Zeit in der Lübecker Altstadt.</p>
-          <div class="meta">
-            <div><span>Apartments</span><b>8</b></div>
-            <div><span>Größen</span><b>25 – 75 m²</b></div>
-            <div><span>Lage</span><b>Königstraße 1–3</b></div>
-            <div><span>Ab</span><b>126 € / Nacht</b></div>
-          </div>
+      <div class="intro-lead">
+        <span class="eb">Willkommen bei Arved</span>
+        <h2>Ein Haus aus der <i>Kaiserzeit</i>. Mit Sinn für das Besondere.</h2>
+      </div>
+      <div class="vprops">
+        <div class="vprop">
+          <span class="vnum">01</span>
+          <h3>Individuell eingerichtet</h3>
+          <p>Jedes Apartment mit eigener Handschrift — Samt und Messing, voll ausgestattete Küche, Wellnessdusche und WLAN.</p>
         </div>
+        <div class="vprop">
+          <span class="vnum">02</span>
+          <h3>Mitten in der Altstadt</h3>
+          <p>Königstraße 1–3: Holstentor, Marienkirche und die Trave liegen fußläufig vor der Tür.</p>
+        </div>
+        <div class="vprop">
+          <span class="vnum">03</span>
+          <h3>So lange Sie möchten</h3>
+          <p>Eine Nacht oder ein ganzer Monat, privat oder geschäftlich — flexibel und direkt gebucht.</p>
+        </div>
+      </div>
+      <div class="statstrip">
+        <div class="st"><b>8</b><span>Apartments</span></div>
+        <div class="st"><b>25–75 m²</b><span>Wohnfläche</span></div>
+        <div class="st"><b>1880er</b><span>Kaiserzeit</span></div>
+        <div class="st"><b>ab 126 €</b><span>pro Nacht</span></div>
       </div>
     </div>
   </div>
@@ -369,42 +413,42 @@ body.menu-open{overflow:hidden;}
     <div class="wrap">
       <div class="shead">
         <span class="rn">I</span>
-        <div><span class="eb">Apartments</span><h2>Acht Häuser im Haus.</h2></div>
+        <div><span class="eb">Apartments</span><h2>Acht Welten unter einem Dach.</h2></div>
       </div>
       <div class="agrid">
-        <a class="acard c-7 tall" style="--w:#44576f" href="apartment-grand.html">
+        <a class="acard c-7 tall" style="--w:#3d605e" href="apartment-grand.html">
           <img src="assets/arved/grand-1.jpg" alt="Wohnsalon Grand" style="object-position:center 50%;">
           <div class="g"></div><span class="badge">№ 01</span>
-          <div class="c"><span class="cat">Zwei-Zimmer-Apartment</span><h3>Grand</h3>
-            <div class="row"><span class="spec">bis 4 Personen · 50 m² · separates Schlafzimmer, Kingsize</span><span class="pr"><small>ab</small><b>158 €</b></span></div>
+          <div class="c"><h3>Grand</h3>
+            <div class="row"><div class="meta"><span>2 Zimmer</span><span>50 m²</span><span>bis 4 Gäste</span></div><span class="pr"><small>ab</small><b>158 €</b></span></div>
           </div>
         </a>
         <a class="acard c-5 tall" style="--w:#826360" href="apartment-maisonette.html">
-          <img src="assets/arved/maisonette-3.jpg" alt="Maisonette Empore" style="object-position:center 54%;">
+          <img src="assets/arved/maisonette-1.jpg" alt="Maisonette — Wohnraum mit hohem Altbaufenster" style="object-position:center 50%;">
           <div class="g"></div><span class="badge">№ 02</span>
-          <div class="c"><span class="cat">Ein-Zimmer-Apartment</span><h3>Maisonette</h3>
-            <div class="row"><span class="spec">bis 3 Personen · 25 m² · Queensize auf Empore</span><span class="pr"><small>ab</small><b>126 €</b></span></div>
+          <div class="c"><h3>Maisonette</h3>
+            <div class="row"><div class="meta"><span>1 Zimmer</span><span>25 m²</span><span>bis 3 Gäste</span></div><span class="pr"><small>ab</small><b>126 €</b></span></div>
           </div>
         </a>
         <a class="acard c-4" style="--w:#5b7380" href="apartment-grand-plus.html">
           <img src="assets/arved/grandplus-3.jpg" alt="Schlafzimmer Grand Plus mit Altstadtblick" style="object-position:center 42%;">
           <div class="g"></div><span class="badge">№ 03</span>
-          <div class="c"><span class="cat">Zwei-Zimmer</span><h3>Grand Plus</h3>
-            <div class="row"><span class="spec">bis 4 P · 60 m²</span><span class="pr"><small>ab</small><b>178 €</b></span></div>
+          <div class="c"><h3>Grand Plus</h3>
+            <div class="row"><div class="meta"><span>2 Zimmer</span><span>60 m²</span><span>bis 4 Gäste</span></div><span class="pr"><small>ab</small><b>178 €</b></span></div>
           </div>
         </a>
-        <a class="acard c-4" style="--w:#3d605e" href="apartment-garden.html">
+        <a class="acard c-4" style="--w:#44576f" href="apartment-garden.html">
           <img src="assets/arved/garden-1.jpg" alt="Wohnzimmer Garden" style="object-position:center 56%;">
           <div class="g"></div><span class="badge">№ 04</span>
-          <div class="c"><span class="cat">Ein-Zimmer</span><h3>Garden</h3>
-            <div class="row"><span class="spec">bis 2 P · 45 m²</span><span class="pr"><small>ab</small><b>126 €</b></span></div>
+          <div class="c"><h3>Garden</h3>
+            <div class="row"><div class="meta"><span>1 Zimmer</span><span>45 m²</span><span>bis 2 Gäste</span></div><span class="pr"><small>ab</small><b>126 €</b></span></div>
           </div>
         </a>
-        <a class="acard c-4" style="--w:#3d605e" href="apartment-garden-plus.html">
-          <img src="assets/arved/gardenplus-4.jpg" alt="Sitzbereich Garden Plus" style="object-position:center 50%;">
+        <a class="acard c-4" style="--w:#44576f" href="apartment-garden-plus.html">
+          <img src="assets/arved/gardenplus-3.jpg" alt="Garden Plus — Schlafzimmer mit Wellnessdusche" style="object-position:center 46%;">
           <div class="g"></div><span class="badge">№ 05</span>
-          <div class="c"><span class="cat">Zwei-Zimmer</span><h3>Garden Plus</h3>
-            <div class="row"><span class="spec">bis 2 P · 75 m² · Terrasse</span><span class="pr"><small>ab</small><b>178 €</b></span></div>
+          <div class="c"><h3>Garden Plus</h3>
+            <div class="row"><div class="meta"><span>2 Zimmer</span><span>75 m²</span><span>bis 2 Gäste</span><span>Terrasse</span></div><span class="pr"><small>ab</small><b>178 €</b></span></div>
           </div>
         </a>
       </div>
@@ -508,11 +552,11 @@ body.menu-open{overflow:hidden;}
     <div class="wrap">
       <div class="ft">
         <div>
-          <div class="mark"><b>ARVED</b><span>Apartments · Lübeck</span></div>
+          <div class="mark"><img src="assets/arved/logo-lion-cream.svg" alt="ARVED Apartments · Lübeck"></div>
           <p>Wohnen in historischem Ambiente inmitten der romantischen Altstadt Lübecks.</p>
         </div>
         <div class="col"><h4>Adresse</h4><div>Königstraße 1–3</div><div>23552 Lübeck</div><div>Deutschland</div></div>
-        <div class="col"><h4>Kontakt</h4><a href="tel:+4945179073550">+49 (0) 451 7907 3550</a><a href="mailto:hello@arved-apartments.de">hello@arved-apartments.de</a><a href="https://www.instagram.com/arvedapartments/" target="_blank" rel="noopener">Instagram</a></div>
+        <div class="col"><h4>Kontakt</h4><a href="tel:+4945179073550"><svg viewBox="0 0 24 24"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>+49 (0) 451 7907 3550</a><a href="mailto:hello@arved-apartments.de"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@arved-apartments.de</a><a href="https://www.instagram.com/arvedapartments/" target="_blank" rel="noopener">Instagram</a></div>
         <div class="col"><h4>Newsletter</h4><p style="margin:0 0 14px;">Neuigkeiten aus Lübeck und dem Haus.</p><div class="nl"><input type="email" placeholder="Ihre E-Mail-Adresse"><button>→</button></div></div>
       </div>
       <div class="ft-b"><span>© 2026 Arved Apartments</span><span><a href="#">Datenschutz</a> · <a href="#">Impressum</a></span></div>
